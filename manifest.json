@@ -1,14 +1,14 @@
 {
-  "background_color": "#ffffff",
-  "description": "dagprogs.github dagprogs.githubdagprogs.github dagprogs.githubdagprogs.github dagprogs.githubdagprogs.github dagprogs.githubdagprogs.github dagprogs.githubdagprogs.github dagprogs.githubdagprogs.github dagprogs.github",
+  "background_color": "#a01212",
+  "description": "",
   "dir": "ltr",
   "display": "standalone",
   "name": "dagprogs.github",
-  "orientation": "any",
+  "orientation": "portrait",
   "scope": "/",
-  "short_name": "dagprogs.github",
-  "start_url": "/",
-  "theme_color": "#ffffff",
+  "short_name": "dagprogs",
+  "start_url": ".",
+  "theme_color": "#a01212",
   "categories": [
     "books"
   ],
@@ -18,5 +18,9 @@
       "src": "/icon.json"
     }
   ],
-  "shortcuts": []
+  "shortcuts": [],
+  "display_override": [
+    "standalone"
+  ],
+  "lang": "ru"
 }
