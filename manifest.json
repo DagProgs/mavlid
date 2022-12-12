@@ -1,0 +1,20 @@
+{
+  "background_color": "#a93131",
+  "description": "",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "dagprogs.github",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "dagprogs.github",
+  "start_url": "/",
+  "theme_color": "#ffffff",
+  "categories": [
+    "books"
+  ],
+  "screenshots": [],
+  "icons": [],
+  "shortcuts": [],
+  "lang": "ru",
+  "display_override": []
+}
