@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'Stolzl';
+    src: url('Stolzl-Light.eot');
+    src: url('Stolzl-Light.eot?#iefix') format('embedded-opentype'),
+        url('Stolzl-Light.woff2') format('woff2'),
+        url('Stolzl-Light.woff') format('woff'),
+        url('Stolzl-Light.ttf') format('truetype'),
+        url('Stolzl-Light.svg#Stolzl-Light') format('svg');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
