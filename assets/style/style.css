@@ -177,6 +177,12 @@ li {
     
 }
 
+h3 {
+	padding-top: 10px;
+	font-size: 25px;
+	color: #000;
+}
+
 h1 {
     text-align: center;
     background: #126bb9;
