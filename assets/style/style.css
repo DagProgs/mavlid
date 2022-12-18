@@ -177,11 +177,24 @@ li {
     
 }
 
+.htelegrm {
+	width: 20px;
+	position: absolute;
+}
+
+
 h3 {
-	padding-top: 10px;
+	
 	font-size: 15px;
-	color: #000;
 	font-family: Verdana;
+	position: absolute;
+	left: 73px;
+	
+}
+
+a {
+	text-decoration: none;
+	color: #37aee2;
 }
 
 h1 {
