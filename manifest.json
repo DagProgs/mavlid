@@ -4,7 +4,8 @@
   "theme_color": "#126bb9",
   "background_color": "#126bb9",
   "display": "standalone",
-  
+  "version": "1.0.0",
+  "app_min_version": "1.0",
   "start_url": ".",
   "icons": [
     {
