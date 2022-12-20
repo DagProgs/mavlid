@@ -1,5 +1,5 @@
-const staticCacheName = 'static-cache-v11';
-const dynamicCacheName = 'dynamic-cache-v11';
+const staticCacheName = 'static-cache-v12';
+const dynamicCacheName = 'dynamic-cache-v12';
 
 const staticAssets = [
   './',
@@ -32,7 +32,7 @@ const staticAssets = [
   './assets/mavlid/22.html',
   './assets/mavlid/23.html',
   './assets/mavlid/24.html',
-  
+  './assets/mavlid/25.html',
   './assets/mavlid/26.html'
 ]
 
