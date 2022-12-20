@@ -1,5 +1,5 @@
-const staticCacheName = 'static-cache-v10';
-const dynamicCacheName = 'dynamic-cache-v10';
+const staticCacheName = 'static-cache-v11';
+const dynamicCacheName = 'dynamic-cache-v11';
 
 const staticAssets = [
   './',
@@ -74,9 +74,9 @@ async function checkOnline(req) {
         if (cachedRes) {
             return cachedRes;
         } else if (req.url.indexOf('.html') !== -1) {
-            return caches.match('offline.html');
+            return caches.match('./offline.html');
         } else {
-            return caches.match('images/no-image.jpg');
+            return caches.match('./images/no-image.jpg');
         }
     }
 }
