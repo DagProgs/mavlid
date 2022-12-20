@@ -1,5 +1,5 @@
-const staticCacheName = 'static-cache-v9';
-const dynamicCacheName = 'dynamic-cache-v9';
+const staticCacheName = 'static-cache-v10';
+const dynamicCacheName = 'dynamic-cache-v10';
 
 const staticAssets = [
   './',
@@ -32,7 +32,7 @@ const staticAssets = [
   './assets/mavlid/22.html',
   './assets/mavlid/23.html',
   './assets/mavlid/24.html',
-  './assets/mavlid/25.html',
+  
   './assets/mavlid/26.html'
 ]
 
@@ -80,48 +80,4 @@ async function checkOnline(req) {
         }
     }
 }
-
-
-
-
-addEventListener('message', ev => {  
-  if (ev.data === 'skipWaiting') return skipWaiting();
-  
-  // вызов модального окна
-const askUserToUpdate = reg => {
-  return Modal.confirm({
-    onOk: async () => {
-      // вешаем обработчик изменения состояния
-      navigator.serviceWorker.addEventListener('controllerchange', () => {
-        window.location.reload();
-      });
-
-      // пропускаем ожидание 
-      if (reg && reg.waiting) {
-        reg.waiting.postMessage({ type: 'SKIP_WAITING' });
-      }
-    },
-
-    onCancel: () => {
-      Modal.destroyAll();
-    },
-    icon: null,
-    title: 'Хорошие новости! ? ',
-    content:
-      'Мы только что обновили версию приложения! Чтобы получить обновления, нажмите на кнопку ниже (страница перезагрузится)',
-    cancelText: 'Не обновлять',
-    okText: 'Обновить'
-  });
-};
-
-// проверка регистрации
-const registerValidSW = (swUrl, config) => {
-  navigator.serviceWorker
-    .register(swUrl)
-    .then(registration => {
-      if (registration.waiting) {
-        // оброботчик SW в ожидании
-        askUserToUpdate(registration);
-      }
-});
 
