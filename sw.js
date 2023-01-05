@@ -1,39 +1,8 @@
-const staticCacheName = 'static-cache-v14';
-const dynamicCacheName = 'dynamic-cache-v14';
+const staticCacheName = 'static-cache-v15';
+const dynamicCacheName = 'dynamic-cache-v15';
 
 const staticAssets = [
-  './',
-  './index.html',
-  './assets/style/style.css',
-  './assets/js/my.js',
-  './assets/js/jquery.min.js',
-  './assets/svg/mavlid.svg',
-  './assets/mavlid/1.html',
-  './assets/mavlid/2.html',
-  './assets/mavlid/3.html',
-  './assets/mavlid/4.html',
-  './assets/mavlid/5.html',
-  './assets/mavlid/6.html',
-  './assets/mavlid/7.html',
-  './assets/mavlid/8.html',
-  './assets/mavlid/9.html',
-  './assets/mavlid/10.html',
-  './assets/mavlid/11.html',
-  './assets/mavlid/12.html',
-  './assets/mavlid/13.html',
-  './assets/mavlid/14.html',
-  './assets/mavlid/15.html',
-  './assets/mavlid/16.html',
-  './assets/mavlid/17.html',
-  './assets/mavlid/18.html',
-  './assets/mavlid/19.html',
-  './assets/mavlid/20.html',
-  './assets/mavlid/21.html',
-  './assets/mavlid/22.html',
-  './assets/mavlid/23.html',
-  './assets/mavlid/24.html',
-  './assets/mavlid/25.html',
-  './assets/mavlid/26.html'
+  './'
 ]
 
 self.addEventListener('install', async event => {
