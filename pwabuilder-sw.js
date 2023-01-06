@@ -1,5 +1,5 @@
-const staticCacheName = 'static-cache-v14';
-const dynamicCacheName = 'dynamic-cache-v14';
+const staticCacheName = 'static-cache-v17';
+const dynamicCacheName = 'dynamic-cache-v17';
 
 // This is the service worker with the combined offline experience (Offline page + Offline copy of pages)
 
