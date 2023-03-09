@@ -1,52 +1,55 @@
-const staticCacheName = 'staticCache-a';
-const dynamicCacheName = 'dynamicCachev';
+var CACHE_NAME = "pwa-v1";
+//Just a sample name, the cache name should be more relatable to the application
+var urlsToCache = ["/", "/index.html"];
 
-const staticAssets = [
-  './',
-  './index.html'
-]
-
-self.addEventListener('install', async event => {
-    const cache = await caches.open(staticCacheName);
-    await cache.addAll(staticAssets);
-    console.log('Service worker has been installed');
+// Install a service worker
+self.addEventListener("install", (event) => {
+  // Perform install steps
+  caches.open(CACHE_NAME).then(function (cache) {
+    Promise.all(
+      urlsToCache.map(function (url) {
+        cache.add(url);
+      })
+    );
+  });
 });
 
-self.addEventListener('activate', async event => {
-    const cachesKeys = await caches.keys();
-    const checkKeys = cachesKeys.map(async key => {
-        if (![staticCacheName, dynamicCacheName].includes(key)) {
-            await caches.delete(key);
+// Cache lookup and fetch the request
+self.addEventListener("fetch", (event) => {
+  event.respondWith(
+    caches.match(event.request).then(function (response) {
+      // Cache hit - return response
+      if (response) {
+        return response;
+      }
+      return fetch(event.request).then(function (response) {
+        if (!response || response.status !== 200 || response.type !== "basic") {
+          return response;
         }
-    });
-    await Promise.all(checkKeys);
-    console.log('Service worker has been activated');
+
+        //Clone the response before putting into cache so that response to browser and response to cache happens in two difference streams
+        var responseForCache = response.clone();
+        caches.open(CACHE_NAME).then(function (cache) {
+          cache.put(event.request, responseForCache);
+        });
+        return response;
+      });
+    })
+  );
 });
 
-self.addEventListener('fetch', event => {
-    console.log(`Trying to fetch ${event.request.url}`);
-    event.respondWith(checkCache(event.request));
+// Update a service worker
+self.addEventListener("activate", (event) => {
+  var cacheWhitelist = ["pwa-v1"];
+  event.waitUntil(
+    caches.keys().then((cacheNames) => {
+      return Promise.all(
+        cacheNames.map((cacheName) => {
+          if (cacheWhitelist.indexOf(cacheName) === -1) {
+            return caches.delete(cacheName);
+          }
+        })
+      );
+    })
+  );
 });
-
-async function checkCache(req) {
-    const cachedResponse = await caches.match(req);
-    return cachedResponse || checkOnline(req);
-}
-
-async function checkOnline(req) {
-    const cache = await caches.open(dynamicCacheName);
-    try {
-        const res = await fetch(req);
-        await cache.put(req, res.clone());
-        return res;
-    } catch (error) {
-        const cachedRes = await cache.match(req);
-        if (cachedRes) {
-            return cachedRes;
-        } else if (req.url.indexOf('.html') !== -1) {
-            return caches.match('offline.html');
-        } else {
-            return caches.match('offline.html');
-        }
-    }
-}
