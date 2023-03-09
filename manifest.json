@@ -464,13 +464,5 @@
       "sizes": "1024x1024"
     }
 	],
-  "shortcuts": [],
-  "lang": "ru",
-  "display_override": [
-    "browser",
-    "fullscreen",
-    "minimal-ui",
-    "standalone",
-    "window-controls-overlay"
-  ]
+  "lang": "ru"
 }
