@@ -1,55 +1,61 @@
-var CACHE_NAME = "pwa-v3";
-//Just a sample name, the cache name should be more relatable to the application
-var urlsToCache = ["/", "/index.html"];
+var version = "v3" // increase for new version
+var staticCacheName = version + "_pwa-static";
+var dynamicCacheName = version + "_pwa-dynamic";
 
-// Install a service worker
-self.addEventListener("install", (event) => {
-  // Perform install steps
-  caches.open(CACHE_NAME).then(function (cache) {
-    Promise.all(
-      urlsToCache.map(function (url) {
-        cache.add(url);
-      })
-    );
-  });
-});
-
-// Cache lookup and fetch the request
-self.addEventListener("fetch", (event) => {
-  event.respondWith(
-    caches.match(event.request).then(function (response) {
-      // Cache hit - return response
-      if (response) {
-        return response;
-      }
-      return fetch(event.request).then(function (response) {
-        if (!response || response.status !== 200 || response.type !== "basic") {
-          return response;
-        }
-
-        //Clone the response before putting into cache so that response to browser and response to cache happens in two difference streams
-        var responseForCache = response.clone();
-        caches.open(CACHE_NAME).then(function (cache) {
-          cache.put(event.request, responseForCache);
-        });
-        return response;
-      });
-    })
-  );
-});
-
-// Update a service worker
-self.addEventListener("activate", (event) => {
-  var cacheWhitelist = ["pwa-v3"];
-  event.waitUntil(
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
-        cacheNames.map((cacheName) => {
-          if (cacheWhitelist.indexOf(cacheName) === -1) {
-            return caches.delete(cacheName);
-          }
+self.addEventListener('activate', function(event) {
+    event.waitUntil(
+        caches.keys().then(function(cacheNames) {
+            return Promise.all(
+                cacheNames.filter(function(cacheName) {
+                    if (!cacheName.startsWith(staticCacheName) &&
+                        !cacheName.startsWith(dynamicCacheName)) {
+                        return true;
+                    }
+                }).map(function(cacheName) {
+                    console.log('Removing old cache.', cacheName);
+                    return caches.delete(cacheName);
+                })
+            );
         })
-      );
-    })
-  );
+    );
 });
+
+self.addEventListener('activate', function(event) {
+    event.waitUntil(
+        caches.keys().then(function(cacheNames) {
+            return Promise.all(
+                cacheNames.filter(function(cacheName) {
+                    if (!cacheName.startsWith(staticCacheName) &&
+                        !cacheName.startsWith(dynamicCacheName)) {
+                        return true;
+                    }
+                }).map(function(cacheName) {
+                    // completely deregister for ios to get changes too
+                    console.log('deregistering Serviceworker')
+                    if ('serviceWorker' in navigator) {
+                        navigator.serviceWorker.getRegistrations().then(function(registrations) {
+                            registrations.map(r => {
+                                r.unregister()
+                            })
+                        })
+                        window.location.reload(true)
+                    }
+
+                    console.log('Removing old cache.', cacheName);
+                    return caches.delete(cacheName);
+                })
+            );
+        })
+    );
+});
+
+if ('serviceWorker' in navigator) {
+   await this.setState({ loadingMessage: 'Updating Your Experience' })
+   navigator.serviceWorker.getRegistrations().then(function(registrations) {
+    registrations.map(r => {
+      r.unregister()
+    })
+   })
+   await AsyncStorage.setItem('appVersion', this.state.serverAppVersion)
+   window.location.reload(true)
+  } 
