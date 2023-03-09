@@ -1,5 +1,5 @@
 const staticCacheName = 'smavlid1';
-const dynamicCacheName = 'dmavlid1';
+const dynamicCacheName = '';
 
 const staticAssets = [
   './',
@@ -15,7 +15,7 @@ self.addEventListener('install', async event => {
 self.addEventListener('activate', async event => {
     const cachesKeys = await caches.keys();
     const checkKeys = cachesKeys.map(async key => {
-        if (![staticCacheName, dynamicCacheName].includes(key)) {
+        if (![staticCacheName].includes(key)) {
             await caches.delete(key);
         }
     });
