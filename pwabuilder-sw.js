@@ -1,61 +1,64 @@
-var version = "v3" // increase for new version
-var staticCacheName = version + "_pwa-static";
-var dynamicCacheName = version + "_pwa-dynamic";
+const staticCacheName = 'site-static-v1.0.3';
+const dynamicCacheName = 'site-dynamic-v1.0';
+const assets = [
+'/',
+'/index.html'
+];
 
-self.addEventListener('activate', function(event) {
-    event.waitUntil(
-        caches.keys().then(function(cacheNames) {
-            return Promise.all(
-                cacheNames.filter(function(cacheName) {
-                    if (!cacheName.startsWith(staticCacheName) &&
-                        !cacheName.startsWith(dynamicCacheName)) {
-                        return true;
-                    }
-                }).map(function(cacheName) {
-                    console.log('Removing old cache.', cacheName);
-                    return caches.delete(cacheName);
-                })
-            );
-        })
-    );
+// cache size limit function
+const limitCacheSize = (name, size) => {
+caches.open(name).then(cache => {
+cache.keys().then(keys => {
+if(keys.length > size){
+cache.delete(keys[0]).then(limitCacheSize(name, size));
+}
+});
+});
+};
+
+// install event
+self.addEventListener('install', evt => {
+//console.log('service worker installed');
+evt.waitUntil(
+caches.open(staticCacheName).then((cache) => {
+console.log('caching shell assets');
+cache.addAll(assets);
+})
+);
 });
 
-self.addEventListener('activate', function(event) {
-    event.waitUntil(
-        caches.keys().then(function(cacheNames) {
-            return Promise.all(
-                cacheNames.filter(function(cacheName) {
-                    if (!cacheName.startsWith(staticCacheName) &&
-                        !cacheName.startsWith(dynamicCacheName)) {
-                        return true;
-                    }
-                }).map(function(cacheName) {
-                    // completely deregister for ios to get changes too
-                    console.log('deregistering Serviceworker')
-                    if ('serviceWorker' in navigator) {
-                        navigator.serviceWorker.getRegistrations().then(function(registrations) {
-                            registrations.map(r => {
-                                r.unregister()
-                            })
-                        })
-                        window.location.reload(true)
-                    }
-
-                    console.log('Removing old cache.', cacheName);
-                    return caches.delete(cacheName);
-                })
-            );
-        })
-    );
+// activate event
+self.addEventListener('activate', evt => {
+//console.log('service worker activated');
+evt.waitUntil(
+caches.keys().then(keys => {
+//console.log(keys);
+return Promise.all(keys
+.filter(key => key !== staticCacheName && key !== dynamicCacheName)
+.map(key => caches.delete(key))
+);
+})
+);
 });
 
-if ('serviceWorker' in navigator) {
-   await this.setState({ loadingMessage: 'Updating Your Experience' })
-   navigator.serviceWorker.getRegistrations().then(function(registrations) {
-    registrations.map(r => {
-      r.unregister()
-    })
-   })
-   await AsyncStorage.setItem('appVersion', this.state.serverAppVersion)
-   window.location.reload(true)
-  } 
+// fetch event
+self.addEventListener('fetch', evt => {
+if(evt.request.url.indexOf('firestore.googleapis.com') === -1){
+evt.respondWith(
+caches.match(evt.request).then(cacheRes => {
+return cacheRes || fetch(evt.request).then(fetchRes => {
+return caches.open(dynamicCacheName).then(cache => {
+cache.put(evt.request.url, fetchRes.clone());
+// check cached items size
+limitCacheSize(dynamicCacheName, 15);
+return fetchRes;
+})
+});
+}).catch(() => {
+if(evt.request.url.indexOf('.html') > -1){
+return caches.match('/offline.html');
+}
+})
+);
+}
+});
