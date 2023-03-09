@@ -1,0 +1,26 @@
+{
+  "background_color": "#003068",
+  "description": "Мавлид лезги чIалалди",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "Мавлид",
+  "orientation": "any",
+  "scope": "https://dagprogs.github.io/mavlid/",
+  "short_name": "Мавлид",
+  "start_url": "https://dagprogs.github.io/mavlid/",
+  "theme_color": "#003068",
+  "categories": [
+    "books"
+  ],
+  "screenshots": [],
+  "icons": [],
+  "shortcuts": [],
+  "lang": "ru",
+  "display_override": [
+    "browser",
+    "fullscreen",
+    "minimal-ui",
+    "standalone",
+    "window-controls-overlay"
+  ]
+}
