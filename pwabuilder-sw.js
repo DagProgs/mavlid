@@ -1,4 +1,4 @@
-const CACHE_NAME = 'cool-cache1';
+const CACHE_NAME = 'cool-cache';
 
 const PRECACHE_ASSETS = [
   './',
