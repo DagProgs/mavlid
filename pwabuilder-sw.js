@@ -1,70 +1,51 @@
-const staticCacheName = 'site-static-v1';
+const staticCacheName = 'static-mavlid-1';
+const dynamicCacheName = 'dynamic-mavlid-1';
 
-const assets = [
+const staticAssets = [
+  './index.html'
+]
 
-  '/',
-
-  '/index.html'
-];
-
-
-
-// событие install
-
-self.addEventListener('install', evt => {
-
-  evt.waitUntil(
-
-    caches.open(staticCacheName).then((cache) => {
-
-      console.log('caching shell assets');
-
-      cache.addAll(assets);
-
-    })
-
-  );
-
+self.addEventListener('install', async event => {
+    const cache = await caches.open(staticCacheName);
+    await cache.addAll(staticAssets);
+    console.log('Service worker has been installed');
 });
 
-
-
-// событие activate
-
-self.addEventListener('activate', evt => {
-
-  evt.waitUntil(
-
-    caches.keys().then(keys => {
-
-      return Promise.all(keys
-
-        .filter(key => key !== staticCacheName)
-
-        .map(key => caches.delete(key))
-
-      );
-
-    })
-
-  );
-
+self.addEventListener('activate', async event => {
+    const cachesKeys = await caches.keys();
+    const checkKeys = cachesKeys.map(async key => {
+        if (![staticCacheName, dynamicCacheName].includes(key)) {
+            await caches.delete(key);
+        }
+    });
+    await Promise.all(checkKeys);
+    console.log('Service worker has been activated');
 });
 
-
-
-// событие fetch
-
-self.addEventListener('fetch', evt => {
-
-  evt.respondWith(
-
-    caches.match(evt.request).then(cacheRes => {
-
-      return cacheRes || fetch(evt.request);
-
-    })
-
-  );
-
+self.addEventListener('fetch', event => {
+    console.log(`Trying to fetch ${event.request.url}`);
+    event.respondWith(checkCache(event.request));
 });
+
+async function checkCache(req) {
+    const cachedResponse = await caches.match(req);
+    return cachedResponse || checkOnline(req);
+}
+
+async function checkOnline(req) {
+    const cache = await caches.open(dynamicCacheName);
+    try {
+        const res = await fetch(req);
+        await cache.put(req, res.clone());
+        return res;
+    } catch (error) {
+        const cachedRes = await cache.match(req);
+        if (cachedRes) {
+            return cachedRes;
+        } else if (req.url.indexOf('.html') !== -1) {
+            return caches.match('offline.html');
+        } else {
+            return caches.match('images/no-image.jpg');
+        }
+    }
+}
