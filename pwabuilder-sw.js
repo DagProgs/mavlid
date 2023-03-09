@@ -1,5 +1,5 @@
-const staticCacheName = 'static-mavlid-3';
-const dynamicCacheName = 'dynamic-mavlid-3';
+const staticCacheName = 'static-mavlid-4';
+const dynamicCacheName = 'dynamic-mavlid-4';
 
 const staticAssets = [
 	'./',
