@@ -1,4 +1,4 @@
-var CACHE_NAME = "pwa-v1";
+var CACHE_NAME = "pwa-v2";
 //Just a sample name, the cache name should be more relatable to the application
 var urlsToCache = ["/", "/index.html"];
 
@@ -40,7 +40,7 @@ self.addEventListener("fetch", (event) => {
 
 // Update a service worker
 self.addEventListener("activate", (event) => {
-  var cacheWhitelist = ["pwa-v1"];
+  var cacheWhitelist = ["pwa-v2"];
   event.waitUntil(
     caches.keys().then((cacheNames) => {
       return Promise.all(
