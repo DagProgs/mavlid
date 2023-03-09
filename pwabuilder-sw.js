@@ -1,5 +1,5 @@
-const staticCacheName = 'sm';
-
+const staticCacheName = 'staticCache-a';
+const dynamicCacheName = 'dynamicCache';
 
 const staticAssets = [
   './',
@@ -15,7 +15,7 @@ self.addEventListener('install', async event => {
 self.addEventListener('activate', async event => {
     const cachesKeys = await caches.keys();
     const checkKeys = cachesKeys.map(async key => {
-        if (![staticCacheName].includes(key)) {
+        if (![staticCacheName, dynamicCacheName].includes(key)) {
             await caches.delete(key);
         }
     });
@@ -33,5 +33,20 @@ async function checkCache(req) {
     return cachedResponse || checkOnline(req);
 }
 
-
+async function checkOnline(req) {
+    const cache = await caches.open(dynamicCacheName);
+    try {
+        const res = await fetch(req);
+        await cache.put(req, res.clone());
+        return res;
+    } catch (error) {
+        const cachedRes = await cache.match(req);
+        if (cachedRes) {
+            return cachedRes;
+        } else if (req.url.indexOf('.html') !== -1) {
+            return caches.match('offline.html');
+        } else {
+            return caches.match('offline.html');
+        }
+    }
 }
