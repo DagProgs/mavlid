@@ -60,7 +60,7 @@
   "start_url": "https://dagprogs.github.io/mavlid/",
   "display": "standalone",
   "orientation": "portrait",
-  "theme_color": "#faebd7",
-  "background_color": "#faebd7"
+  "theme_color": "#3ce2be",
+  "background_color": "#3ce2be"
 
 }
