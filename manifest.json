@@ -1,58 +1,62 @@
 {
   "lang": "ru",
   "dir": "ltr",
-  "name": "Мавлид лезги ч1алал",
-  "short_name": "Мавлид лезги ч1алал",
-  "description": "Мавлид лезги ч1алал",
-  "categories": ["mavlid", "religion", "lezgi"],
+  "name": "Мавлид лезги чIалал",
+  "short_name": "Мавлид лезги чIалал",
+  "description": "Мавлид лезги чIалал",
+  "categories": [
+    "mavlid",
+    "religion",
+    "lezgi"
+  ],
   "icons": [
-	{
+    {
       "src": "img/icons/icon-72x72.png",
       "sizes": "72x72",
       "type": "image/png",
-	  "purpose": "any"
+      "purpose": "any"
     },
     {
       "src": "img/icons/icon-96x96.png",
       "sizes": "96x96",
       "type": "image/png",
-	  "purpose": "any"
+      "purpose": "any"
     },
     {
       "src": "img/icons/icon-128x128.png",
       "sizes": "128x128",
       "type": "image/png",
-	  "purpose": "any"
+      "purpose": "any"
     },
     {
       "src": "img/icons/icon-144x144.png",
       "sizes": "144x144",
       "type": "image/png",
-	  "purpose": "any"
+      "purpose": "any"
     },
     {
       "src": "img/icons/icon-152x152.png",
       "sizes": "152x152",
       "type": "image/png",
-	  "purpose": "any"
+      "purpose": "any"
     },
     {
       "src": "img/icons/icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
-	  "purpose": "any"
+      "purpose": "any"
     },
     {
       "src": "img/icons/icon-284x284.png",
       "sizes": "284x284",
       "type": "image/png",
-	  "purpose": "any"
+      "purpose": "any"
     },
     {
       "src": "img/icons/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
-	  "purpose": "any"
+      "purpose": "any"
     }
   ],
   "scope": "https://dagprogs.github.io/mavlid/",
@@ -60,7 +64,6 @@
   "start_url": "https://dagprogs.github.io/mavlid/",
   "display": "standalone",
   "orientation": "portrait",
-  "theme_color": "#3ce2be",
-  "background_color": "#3ce2be"
-
+  "theme_color": "#faebd7",
+  "background_color": "#faebd7"
 }
