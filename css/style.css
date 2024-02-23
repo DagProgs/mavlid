@@ -9,15 +9,37 @@ body {
   color: #fff;
 }
 
+:root {
+  --h-l: #006d5b;
+  --sh-l: #fff;
+  --t-l: #ffffff;
+  --st-l: #383838;
+}
+
+.dark:root {
+  --h-d: #333333;
+  --sh-d: #666666;
+  --t-d: #fff;
+}
+
 dl {
   width: 100vw;
   min-width: 320px;
-  background-color: antiquewhite;
-  border-bottom: 1px solid red;
+  background-color: var(--h-l);
+  border-bottom: 1px solid #4fa395;
+}
+
+.dark dl {
+  background-color: var(--h-d);
+  border-bottom: 1px solid #686868;
 }
 
 dl dd {
-  background-color: rgb(240, 240, 240);
+  background-color: var(--sh-l);
+}
+
+.dark dl dd {
+  background-color: var(--sh-d);
 }
 
 dt {
@@ -25,21 +47,30 @@ dt {
   margin: 10px 10px;
   height: clamp(1.875rem, 1.6118rem + 1.3158vw, 2.5rem);
   font-size: clamp(1.25rem, 0.9868rem + 1.3158vw, 1.875rem);
-  color: #003a61;
+  color: var(--t-l);
   position: relative;
+}
+
+.dark dt {
+  color: var(--t-d);
 }
 
 dt:nth-child(1) {
   justify-content: center;
   align-items: center;
-  background-color: #fff;
-  border: 1px solid red;
+  background-color: #13a78e;
+  border: 1px solid #fff;
   border-radius: 50%;
   width: clamp(1.875rem, 1.6118rem + 1.3158vw, 2.5rem);
   height: clamp(1.875rem, 1.6118rem + 1.3158vw, 2.5rem);
   position: absolute;
   display: inline-flex;
   font-size: clamp(0.75rem, 0.5395rem + 1.0526vw, 1.25rem);
+}
+
+.dark dt:nth-child(1) {
+  background-color: #585858;
+  border: 1px solid #ffffff;
 }
 
 dt:nth-child(2) {
@@ -51,6 +82,70 @@ dt:nth-child(2) {
 
 dd {
   padding: 10px;
-  color: #003a61;
+  color: var(--st-l);
   font-size: clamp(1.125rem, 0.8092rem + 1.5789vw, 1.875rem);
+}
+
+.dark dd {
+  padding: 10px;
+  color: var(--t-d);
+  font-size: clamp(1.125rem, 0.8092rem + 1.5789vw, 1.875rem);
+}
+
+.mode-switch {
+  flex-shrink: 0;
+  padding: 0;
+  background-color: var(--chat-background);
+  border: none;
+  color: #ddd;
+  outline: none;
+  cursor: pointer;
+  box-shadow: var(--navigation-box-shadow);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  transform-origin: center;
+}
+.mode-switch svg {
+  width: 0;
+  height: 24px;
+  transition: all 0.3s ease-in;
+  transform-origin: center;
+}
+.mode-switch .moon {
+  opacity: 0;
+}
+.mode-switch .sun {
+  width: 24px;
+}
+
+.dark .moon {
+  opacity: 1;
+  width: 24px;
+}
+
+.dark .sun {
+  opacity: 0;
+  width: 0;
+}
+
+.app-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  background-color: #004439;
+  z-index: 10;
+  bottom: 0;
+  right: 0;
+  border-radius: 100%;
+}
+
+.dark .app-container {
+  background-color: #707070;
 }/*# sourceMappingURL=style.css.map */
