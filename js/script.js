@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $.getJSON('https://dagprogs.github.io/apidb/mavlid/db.json', function (json) {
+    $.getJSON('js/json/db.json', function (json) {
         container = $("#result");
         container.html("");
 

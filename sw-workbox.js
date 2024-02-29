@@ -34,11 +34,27 @@ workbox.precaching.precacheAndRoute([
   },
   {
     "url": "js/script.js",
-    "revision": "443837601693e505a79d53c0895f5959"
+    "revision": "3560a8bf15b9ef333de331cab6ec8845"
+  },
+  {
+    "url": "js/json/db.json",
+    "revision": "7afe036a053be7a503b9eb7e9639d4e0"
+  },
+  {
+    "url": "main.js",
+    "revision": "80846bb3403b82a07c7f84658f186b23"
+  },
+  {
+    "url": "polyfills.js",
+    "revision": "56f34b0f4d3a42d45bfdb1782adaa173"
+  },
+  {
+    "url": "runtime.js",
+    "revision": "cd1ce3e306bf57f272364d1cc0249d6e"
   },
   {
     "url": "manifest.json",
-    "revision": "6f61066f46b74d5e405872d556c16b38"
+    "revision": "a9f3631b38bce8a8d2b26a202bbb1d83"
   },
   {
     "url": "img/icons/icon-128x128.png",
