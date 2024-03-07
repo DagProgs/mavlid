@@ -1,66 +1,51 @@
 <!DOCTYPE html>
-<html lang="lez">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="js/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="css/style.css">
-    <title>Мавлид леги ч1алал</title>
-	<link rel="manifest" href="manifest.json" />
-    <script
-      async
-      src="https://cdn.jsdelivr.net/npm/pwacompat@2.0.8/pwacompat.min.js"
-      integrity="sha384-uONtBTCBzHKF84F6XvyC8S0gL8HTkAPeCyBNvfLfsqHh+Kd6s/kaS4BdmNQ5ktp1"
-      crossorigin="anonymous"
-    ></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Мавлид лезги чIалал</title>
+    <link rel="manifest" href="manifest.json" />
+    <script async src="https://cdn.jsdelivr.net/npm/pwacompat@2.0.8/pwacompat.min.js"
+        integrity="sha384-uONtBTCBzHKF84F6XvyC8S0gL8HTkAPeCyBNvfLfsqHh+Kd6s/kaS4BdmNQ5ktp1"
+        crossorigin="anonymous"></script>
 </head>
+
 <body>
-    
-    <div id="result" class="container"></div>
-    <div class="app-container">
+    <header class="header">
+        <div class="header_box">
+            <h1>Мавлид лезги чIалал</h1>
+        </div>
+    </header>
+    <div id="poetry"></div>
 
-        <button class="mode-switch">
-            <svg class="sun" fill="none" stroke="#fbb046" stroke-linecap="round" stroke-linejoin="round"
-                stroke-width="2" class="feather feather-sun" viewBox="0 0 24 24">
-                <defs />
-                <circle cx="12" cy="12" r="5" />
-                <path
-                    d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
-            </svg>
-            <svg class="moon" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round"
-                stroke-width="2" class="feather feather-moon" viewBox="0 0 24 24">
-                <defs />
-                <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
-            </svg>
-        </button>
+    <script type="module">
 
-    </div>
+        import { Workbox } from 'https://storage.googleapis.com/workbox-cdn/releases/4.3.0/workbox-window.prod.mjs';
 
-	<script type="module">
+        if ('serviceWorker' in navigator) {
 
-    import { Workbox } from 'https://storage.googleapis.com/workbox-cdn/releases/4.3.0/workbox-window.prod.mjs';
+            const wb = new Workbox('sw-workbox.js');
 
-    if ('serviceWorker' in navigator) {
-
-        const wb = new Workbox('sw-workbox.js');
-
-        wb.addEventListener('installed', event => {
-            if (event.isUpdate) {
-                if (confirm(`Мы только что обновили версию приложения! Чтобы получить обновления, нажмите на кнопку OK.`)) {
-                    window.location.reload();
+            wb.addEventListener('installed', event => {
+                if (event.isUpdate) {
+                    if (confirm(`Мы только что обновили версию приложения! Чтобы получить обновления, нажмите на кнопку OK.`)) {
+                        window.location.reload();
+                    }
+                } else {
+                    alert(`Приложение готово к работе в автономном режиме`)
                 }
-            } else {
-                alert(`Приложение готово к работе в автономном режиме`)
-            }
-        });
+            });
 
-        wb.register();
-    }
+            wb.register();
+        }
 
-</script>
-	<script type="text/javascript" src="runtime.js"></script>
+    </script>
+    <script type="text/javascript" src="runtime.js"></script>
     <script type="text/javascript" src="polyfills.js"></script>
     <script type="text/javascript" src="main.js"></script>
-    <script src="js/script.js"></script>
+    <script src="assets/js/common.js"></script>
 </body>
+
 </html>
