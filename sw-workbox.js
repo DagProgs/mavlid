@@ -90,7 +90,7 @@ workbox.precaching.precacheAndRoute([
   },
   {
     "url": "assets/js/common.js",
-    "revision": "c38504a1ed0d06a63c3c1eb962f526b0"
+    "revision": "3abc92f35456eadb80530c8309534027"
   }
 ]);
 
