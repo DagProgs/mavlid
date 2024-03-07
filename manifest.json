@@ -1,11 +1,11 @@
 {
-  "manifest_version": 6,
+  "manifest_version": 7,
   "lang": "ru",
   "dir": "ltr",
   "name": "Мавлид лезги чIалал",
   "short_name": "Мавлид лезги чIалал",
   "description": "Мавлид лезги чIалал",
-  "version": "2.2.2",
+  "version": "2.2.3",
   "categories": ["mavlid", "religion", "lezgi"],
   "icons": [
     {

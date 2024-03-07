@@ -38,23 +38,15 @@ workbox.precaching.precacheAndRoute([
   },
   {
     "url": "manifest.json",
-    "revision": "87678ec31f466c5340d32ac7024084ee"
+    "revision": "6f4f32e8cffec15a85a1af6ee75f9f53"
   },
   {
     "url": "assets/css/style.css",
     "revision": "fab440ee2a4e908b7bd9ae53e783872d"
   },
   {
-    "url": "assets/js/common.js",
-    "revision": "c38504a1ed0d06a63c3c1eb962f526b0"
-  },
-  {
     "url": "assets/db.json",
     "revision": "ceec51e79b80e412833e6805cdd5c675"
-  },
-  {
-    "url": "assets/img/icon.svg",
-    "revision": "1078e46ee8cda9e9ef70a8f0a3a9802f"
   },
   {
     "url": "assets/icons/icon-128x128.png",
@@ -91,6 +83,14 @@ workbox.precaching.precacheAndRoute([
   {
     "url": "assets/icons/icon-96x96.png",
     "revision": "cce9088080585a31862e0fe7d70d306f"
+  },
+  {
+    "url": "assets/img/icon.svg",
+    "revision": "1078e46ee8cda9e9ef70a8f0a3a9802f"
+  },
+  {
+    "url": "assets/js/common.js",
+    "revision": "c38504a1ed0d06a63c3c1eb962f526b0"
   }
 ]);
 
