@@ -10,7 +10,7 @@ function toggleLastName(element) {
     headerTitle.textContent = openedTitle;
 }
 
-fetch('../assets/db.json')
+fetch('./assets/js/db.json')
     .then(response => response.json())
     .then(data => {
         const poetryElement = document.getElementById('poetry');

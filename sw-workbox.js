@@ -45,10 +45,6 @@ workbox.precaching.precacheAndRoute([
     "revision": "fab440ee2a4e908b7bd9ae53e783872d"
   },
   {
-    "url": "assets/db.json",
-    "revision": "ceec51e79b80e412833e6805cdd5c675"
-  },
-  {
     "url": "assets/icons/icon-128x128.png",
     "revision": "c1fdb4f328dc224c31d4f63b37a2d7eb"
   },
@@ -90,7 +86,11 @@ workbox.precaching.precacheAndRoute([
   },
   {
     "url": "assets/js/common.js",
-    "revision": "3abc92f35456eadb80530c8309534027"
+    "revision": "1234085e2fb3abad1ca6634e057c3d8e"
+  },
+  {
+    "url": "assets/js/db.json",
+    "revision": "ceec51e79b80e412833e6805cdd5c675"
   }
 ]);
 
