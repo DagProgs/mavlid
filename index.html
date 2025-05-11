@@ -1,51 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <title>Мавлид лезги чIалал</title>
-    <link rel="manifest" href="manifest.json" />
-    <script async src="https://cdn.jsdelivr.net/npm/pwacompat@2.0.8/pwacompat.min.js"
-        integrity="sha384-uONtBTCBzHKF84F6XvyC8S0gL8HTkAPeCyBNvfLfsqHh+Kd6s/kaS4BdmNQ5ktp1"
-        crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <meta name="google" content="notranslate">
+  <title>404 Not Found</title>
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="robots" content="index,follow,noodp">
+  <meta name="googlebot" content="index,follow">
+  <meta name="google" content="nositelinkssearchbox">
+  <meta name="google" content="notranslate">
+  <meta name="google-site-verification" content="verification_token">
+  <meta name="generator" content="WEB APP">
+  <meta content="website">
+  <link rel="manifest" href="manifest.json" />
+  <script async src="pwacompat.min.js"></script>
+  <script defer src="update.js" type="module"></script>
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      color: #666666;
+    }
+    .box {
+      display: flex;
+      justify-content: center;
+    }
+    h1 {
+      margin: 30px 0;
+    }
+    span {
+      border-left: 3px solid #666666;
+      padding: 0 10px;
+    }
+    p {
+      display: flex;
+      justify-content: center;
+      margin: 10px;
+      color: #ff0000;
+    }
+  </style>
 </head>
-
 <body>
-    <header class="header">
-        <div class="header_box">
-            <h1>Мавлид лезги чIалал</h1>
-        </div>
-    </header>
-    <div id="poetry"></div>
+  <div class="box">
+  <h1>404 <span>Not Found</span></h1>
+  </div>
+  <hr>
+  <p>Error</p>
 
-    <script type="module">
-
-        import { Workbox } from 'https://storage.googleapis.com/workbox-cdn/releases/4.3.0/workbox-window.prod.mjs';
-
-        if ('serviceWorker' in navigator) {
-
-            const wb = new Workbox('sw-workbox.js');
-
-            wb.addEventListener('installed', event => {
-                if (event.isUpdate) {
-                    if (confirm(`Мы только что обновили версию приложения! Чтобы получить обновления, нажмите на кнопку OK.`)) {
-                        window.location.reload();
-                    }
-                } else {
-                    alert(`Приложение готово к работе в автономном режиме`)
-                }
-            });
-
-            wb.register();
-        }
-
-    </script>
-    <script type="text/javascript" src="runtime.js"></script>
-    <script type="text/javascript" src="polyfills.js"></script>
-    <script type="text/javascript" src="main.js"></script>
-    <script src="assets/js/common.js"></script>
+  <!--Scripts-->
+  <script type="text/javascript" src="runtime.js"></script>
+  <script type="text/javascript" src="polyfills.js"></script>
+  <script type="text/javascript" src="main.js"></script>
 </body>
-
 </html>

@@ -1,10 +1,10 @@
-importScripts('workbox-v4.3.0/workbox-sw.js');
+importScripts('workbox-v4.3.1/workbox-sw.js');
 
 // SETTINGS
 
 // Path prefix to load modules locally
 workbox.setConfig({
-  modulePathPrefix: 'workbox-v4.3.0/'
+  modulePathPrefix: 'workbox-v4.3.1/'
 });
 
 // Turn on logging
@@ -22,7 +22,7 @@ workbox.core.clientsClaim();
 workbox.precaching.precacheAndRoute([
   {
     "url": "index.html",
-    "revision": "6f331084846fd3ce32b09231e47b746b"
+    "revision": "436f314384326622b4e439afd9d4fe28"
   },
   {
     "url": "main.js",
@@ -33,12 +33,16 @@ workbox.precaching.precacheAndRoute([
     "revision": "56f34b0f4d3a42d45bfdb1782adaa173"
   },
   {
+    "url": "pwacompat.min.js",
+    "revision": "038770ef3eb91f3e8a50a3916cb7cf28"
+  },
+  {
     "url": "runtime.js",
     "revision": "cd1ce3e306bf57f272364d1cc0249d6e"
   },
   {
-    "url": "manifest.json",
-    "revision": "6f4f32e8cffec15a85a1af6ee75f9f53"
+    "url": "update.js",
+    "revision": "2e37a1e61c0f6c88bddbb61150536944"
   },
   {
     "url": "assets/css/style.css",
@@ -82,7 +86,7 @@ workbox.precaching.precacheAndRoute([
   },
   {
     "url": "assets/img/icon.svg",
-    "revision": "1078e46ee8cda9e9ef70a8f0a3a9802f"
+    "revision": "3beb8f8959c3040689dcac238d2b11a6"
   },
   {
     "url": "assets/js/common.js",
